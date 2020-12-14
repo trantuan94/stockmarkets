@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  mongodb-server:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root123
+      MONGO_INITDB_DATABASE: stockmarket_db
+    ports: 
+      - "27017:27017"
+    networks:
+      - stockmarket_network
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+networks:
+  stockmarket_network:
+    driver: bridge

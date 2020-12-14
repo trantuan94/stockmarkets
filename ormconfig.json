@@ -3,9 +3,9 @@
     "type": "mongodb",
     "host": "localhost",
     "port": 27017,
-    "username": "",
-    "password": "",
-    "database": "stockmarkets",
+    "username": "stockmarket",
+    "password": "123456",
+    "database": "stockmarket_db",
     "entities": ["dist/**/*.entity{.ts,.js}"],
     "synchronize": true,
     "useUnifiedTopology": true
