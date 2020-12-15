@@ -16,7 +16,7 @@ export class CrawlStockDataService {
 
     @Cron('0 */2 * * * *')
     async handleCron(): Promise<any> {
-        console.log('running crawl stock data...');
+        this.logger.log('running crawl stock data...');
         const urls = {
             HOSE: 'https://trade.vndirect.com.vn/chung-khoan/hose',
             HNX: 'https://trade.vndirect.com.vn/chung-khoan/hnx',
@@ -31,12 +31,12 @@ export class CrawlStockDataService {
             }
         }
         
-        console.log('finish crawl stock data (' + results.length + ').');
+        this.logger.log('finish crawl stock data (' + results.length + ').');
         return results
     }
 
     public async crawlStockDataOnStockExchange(url: string, stockExchange: string): Promise<any> {
-        console.log('stockExchange', stockExchange);
+        this.logger.log('stockExchange', stockExchange);
         await this.page.goto(url, { waitUntil: 'networkidle2' });
         let stocks = await this.page.evaluate(function () {
             const dataStocks = [];
